@@ -1,17 +1,14 @@
-import axios from 'axios';
+import api from './api';
 
-const BASE_URL = 'http://localhost:8080/api';
+export const getCurrentUser = async (): Promise<any> => {
+  const token = localStorage.getItem('token');
+  if (!token) {
+    console.warn('No token found');
+    return null; // Or handle this case as needed
+  }
 
-export const getCurrentUser = async () => {
   try {
-    const token = localStorage.getItem('token');
-    if (!token) throw new Error('No token found');
-    
-    const response = await axios.get(`${BASE_URL}/currentUser`, {
-      headers: {
-        'Authorization': `Bearer ${token}`
-      }
-    });
+    const response = await api.get('/api/currentUser');
     return response.data;
   } catch (error) {
     console.error('Error fetching current user:', error);
