@@ -1,38 +1,84 @@
-.App {
-  text-align: center;
+
+
+.table {
+  width: 100%;
+  margin-bottom: 20px;
+  background-color: #fff;
+  border: 1px solid #dee2e6;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.table th,
+.table td {
+  padding: 8px;
+  text-align: left;
+  border-top: 1px solid #dee2e6;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+.table thead th {
+  background-color: #4CAF50;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.btn-primary {
+  background-color: #4CAF50;
+  border-color: #4CAF50;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.btn-primary:hover {
+  background-color: #45a049;
+  border-color: #45a049;
 }
+
+.btn-warning {
+  background-color: #ff9800;
+  border-color: #ff9800;
+}
+
+.btn-danger {
+  background-color: #f44336;
+  border-color: #f44336;
+}
+
+.header {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 0;
+  text-align: center;
+}
+
+.search-bar {
+  margin: 20px 0;
+  display: flex;
+  justify-content: center;
+}
+
+.search-bar input {
+  width: 300px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.results-section,
+.participants-section,
+.disciplines-section {
+  background-color: rgb(228, 203, 203);
+  padding: 20px;
+  margin: 20px 0;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.section-title {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+}
+
+.add-button {
+  margin-bottom: 20px;
+}
+
+.table-responsive {
+  margin-top: 20px;
+}
+

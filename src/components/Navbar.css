@@ -1,0 +1,53 @@
+.navbar {
+  background-color: #4CAF50;
+  color: rgb(75, 163, 119);
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Space between brand and nav items */
+}
+
+.navbar .navbar-brand {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: rgb(12, 6, 6);
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+  border-radius: 10px;
+  margin-right: 20px; /* Add space to the right of the brand */
+  padding: 5px 10px;
+  text-decoration: none;
+}
+
+.navbar .navbar-nav {
+  display: flex;
+  align-items: center;
+}
+
+.navbar .navbar-nav .nav-item {
+  margin: 0 10px; /* Add space around the items */
+}
+
+.navbar .navbar-nav .nav-item .nav-link {
+  font-size: 1.2rem;
+  color: rgb(12, 6, 6);
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+  font-weight: 300;
+  border-radius: 7px;
+  padding: 5px 10px;
+  text-decoration: none;
+}
+
+.navbar .navbar-nav .nav-item .nav-link:hover {
+  color: #896565;
+}
+
+.sticky-top {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  z-index: 1030;
+}
+
+.navbar-brand {
+background-color: #4CAF50;
+}
