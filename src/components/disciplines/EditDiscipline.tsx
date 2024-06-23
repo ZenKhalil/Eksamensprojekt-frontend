@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { getDisciplineById, updateDiscipline } from '../../services/DisciplineService';
 import { Discipline } from '../../types/Discipline';
 
 const EditDiscipline: React.FC = () => {
   const { id } = useParams<{ id: string }>();
+  const navigate = useNavigate();
   const [discipline, setDiscipline] = useState<Discipline>({ name: '', resultType: '', username: '' });
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -33,7 +34,7 @@ const EditDiscipline: React.FC = () => {
     e.preventDefault();
     try {
       await updateDiscipline(Number(id), discipline);
-      window.location.reload(); // Reload the page after update
+      navigate('/disciplines'); // Redirect to disciplines list page after update
     } catch (err) {
       setError('Failed to update discipline');
     }
