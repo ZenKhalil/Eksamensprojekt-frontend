@@ -14,7 +14,7 @@ const Login: React.FC = () => {
     event.preventDefault();
     try {
       await auth.signIn(username, password);
-      navigate('/');
+      navigate('/'); // Redirect to the home page after login
     } catch (err) {
       if (typeof err === 'string') {
         setError(err);
