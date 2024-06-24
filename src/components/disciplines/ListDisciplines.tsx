@@ -46,6 +46,11 @@ const ListDisciplines: React.FC = () => {
     }
   };
 
+  const canEditOrDelete = (discipline: Discipline) => {
+    if (!currentUser) return false;
+    return currentUser.role === 'ADMIN' || currentUser.username === discipline.username;
+  };
+
   return (
     <div>
       <h2>Disciplines</h2>
@@ -63,7 +68,7 @@ const ListDisciplines: React.FC = () => {
             <tr key={discipline.id}>
               <td>{discipline.name}</td>
               <td>{discipline.resultType}</td>
-              {currentUser && (
+              {currentUser && canEditOrDelete(discipline) && (
                 <td>
                   <Link to={`/disciplines/edit/${discipline.id}`} className="btn btn-warning btn-sm">Edit</Link>
                   <button
