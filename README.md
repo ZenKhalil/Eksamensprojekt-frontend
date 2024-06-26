@@ -41,52 +41,6 @@ This is the frontend application for the Athletics Management system. It is buil
 2. **Open your browser and navigate to ``http://localhost:3000``**
 
 
-## Folder Structure
-
-athletics-management-frontend/
-├── public/
-│   ├── index.html
-│   └── ...
-├── src/
-│   ├── components/
-│   │   ├── Auth/
-│   │   │   ├── Login.tsx
-│   │   │   ├── Signup.tsx
-│   │   │   └── AuthProvider.tsx
-│   │   ├── Participants/
-│   │   │   ├── CreateParticipant.tsx
-│   │   │   ├── ListParticipants.tsx
-│   │   │   └── ...
-│   │   ├── Disciplines/
-│   │   │   ├── CreateDiscipline.tsx
-│   │   │   ├── ListDisciplines.tsx
-│   │   │   └── ...
-│   │   ├── Results/
-│   │   │   ├── CreateResult.tsx
-│   │   │   ├── ListResults.tsx
-│   │   │   └── ...
-│   │   ├── Navbar.tsx
-│   │   └── ...
-│   ├── services/
-│   │   ├── api.ts
-│   │   ├── AuthService.ts
-│   │   ├── ParticipantService.ts
-│   │   ├── DisciplineService.ts
-│   │   ├── ResultService.ts
-│   │   └── UserService.ts
-│   ├── types/
-│   │   ├── Participant.ts
-│   │   ├── Discipline.ts
-│   │   ├── Result.ts
-│   │   └── ...
-│   ├── App.tsx
-│   ├── index.tsx
-│   └── ...
-├── .gitignore
-├── package.json
-├── README.md
-└── ...
-
 ## Available Scripts
 
 In the project directory, you can run:
