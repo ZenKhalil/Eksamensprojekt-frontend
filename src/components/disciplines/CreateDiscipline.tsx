@@ -4,7 +4,7 @@ import { createDiscipline } from '../../services/DisciplineService';
 import { Discipline } from '../../types/Discipline';
 
 const CreateDiscipline: React.FC = () => {
-  const [discipline, setDiscipline] = useState<Discipline>({ name: '', resultType: '', username: '' });
+  const [discipline, setDiscipline] = useState<Omit<Discipline, 'id' | 'username'>>({ name: '', resultType: '' });
   const navigate = useNavigate();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -14,8 +14,12 @@ const CreateDiscipline: React.FC = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    await createDiscipline(discipline);
-    navigate('/disciplines');
+    try {
+      await createDiscipline(discipline);
+      navigate('/disciplines');
+    } catch (err) {
+      console.error('Failed to create discipline', err);
+    }
   };
 
   return (

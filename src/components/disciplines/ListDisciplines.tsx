@@ -24,9 +24,13 @@ const ListDisciplines: React.FC = () => {
     };
 
     const fetchCurrentUser = async () => {
-      const user = await getCurrentUser();
-      console.log('Fetched current user:', user);
-      setCurrentUser(user);
+      try {
+        const user = await getCurrentUser();
+        console.log('Fetched current user:', user);
+        setCurrentUser(user);
+      } catch (error) {
+        console.error('Error fetching current user:', error);
+      }
     };
 
     fetchDisciplines();
@@ -34,13 +38,16 @@ const ListDisciplines: React.FC = () => {
   }, []);
 
   const handleDelete = async (id: number) => {
-    await deleteDiscipline(id);
-    setDisciplines(disciplines.filter(discipline => discipline.id !== id));
+    try {
+      await deleteDiscipline(id);
+      setDisciplines(disciplines.filter(discipline => discipline.id !== id));
+    } catch (error) {
+      console.error('Error deleting discipline:', error);
+    }
   };
 
   const canEditOrDelete = (discipline: Discipline) => {
     if (!currentUser) return false;
-    console.log('Checking if can edit/delete:', discipline, currentUser);
     return currentUser.role === 'ADMIN' || currentUser.username === discipline.username;
   };
 

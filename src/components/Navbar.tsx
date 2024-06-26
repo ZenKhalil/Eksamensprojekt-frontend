@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from './AuthProvider';
 import './Navbar.css';
@@ -10,6 +10,7 @@ const Navbar: React.FC = () => {
   const handleLogout = () => {
     auth.signOut();
     navigate('/');
+    window.location.reload(); // Force page refresh after logging out
   };
 
   return (
@@ -32,21 +33,21 @@ const Navbar: React.FC = () => {
             </li>
           </ul>
           <ul className="navbar-nav ml-auto">
-  {auth.isLoggedIn() ? (
-    <li className="nav-item">
-      <span className="nav-link" onClick={handleLogout}>Logout</span>
-    </li>
-  ) : (
-    <>
-      <li className="nav-item">
-        <Link className="nav-link" to="/login">Login</Link>
-      </li>
-      <li className="nav-item">
-        <Link className="nav-link" to="/signup">Sign Up</Link>
-      </li>
-    </>
-  )}
-</ul>
+            {auth.isLoggedIn() ? (
+              <li className="nav-item">
+                <span className="nav-link" onClick={handleLogout}>Logout</span>
+              </li>
+            ) : (
+              <>
+                <li className="nav-item">
+                  <Link className="nav-link" to="/login">Login</Link>
+                </li>
+             <li className="nav-item">
+                  <Link className="nav-link" to="/signup">Sign Up</Link>
+               </li>
+              </>
+            )}
+          </ul>
         </div>
       </div>
     </nav>

@@ -1,38 +1,28 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { createParticipant } from '../../services/ParticipantService';
-import { getCurrentUser } from '../../services/UserService';
 import { Participant } from '../../types/Participant';
 
 const CreateParticipant: React.FC = () => {
   const [participant, setParticipant] = useState<Participant>({ name: '', gender: '', age: 0, club: '', username: '' });
+  const [error, setError] = useState<string | null>(null);
   const navigate = useNavigate();
-  const [currentUser, setCurrentUser] = useState<any>(null);
 
-  useEffect(() => {
-    const fetchCurrentUser = async () => {
-      const user = await getCurrentUser();
-      setCurrentUser(user);
-      setParticipant(prevState => ({ ...prevState, username: user.username }));
-    };
-
-    fetchCurrentUser();
-  }, []);
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setParticipant(prevState => ({ ...prevState, [name]: value }));
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    await createParticipant(participant);
-    navigate('/participants');
+    try {
+      await createParticipant(participant);
+      navigate('/participants'); // Navigate back to participants list after successful creation
+    } catch (err) {
+      setError('Failed to create participant');
+      console.error(err);
+    }
   };
-
-  if (!currentUser) {
-    return <div>Loading...</div>;
-  }
 
   return (
     <div>
@@ -52,15 +42,18 @@ const CreateParticipant: React.FC = () => {
         </div>
         <div className="form-group">
           <label htmlFor="gender">Gender</label>
-          <input
-            type="text"
+          <select
             className="form-control"
             id="gender"
             name="gender"
             value={participant.gender}
             onChange={handleChange}
             required
-          />
+          >
+            <option value="">Select Gender</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+          </select>
         </div>
         <div className="form-group">
           <label htmlFor="age">Age</label>
@@ -88,6 +81,7 @@ const CreateParticipant: React.FC = () => {
         </div>
         <button type="submit" className="btn btn-primary">Create</button>
       </form>
+      {error && <div className="alert alert-danger">{error}</div>}
     </div>
   );
 };

@@ -8,7 +8,7 @@ export const getCurrentUser = async (): Promise<any> => {
   }
 
   try {
-    const response = await api.get('/api/currentUser');
+    const response = await api.get('/api/currentUser'); // Adjust endpoint as needed
     return response.data;
   } catch (error) {
     console.error('Error fetching current user:', error);

@@ -1,4 +1,5 @@
 import { Result } from './Result';
+import { Discipline } from './Discipline';
 
 export interface Participant {
   id?: number;
@@ -8,4 +9,6 @@ export interface Participant {
   club: string;
   username: string; 
   results?: Result[];
+  discipline?: Discipline;
+  disciplineId?: number;
 }
