@@ -8,7 +8,7 @@ const CreateParticipant: React.FC = () => {
   const [error, setError] = useState<string | null>(null);
   const navigate = useNavigate();
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setParticipant(prevState => ({ ...prevState, [name]: value }));
   };
@@ -42,15 +42,18 @@ const CreateParticipant: React.FC = () => {
         </div>
         <div className="form-group">
           <label htmlFor="gender">Gender</label>
-          <input
-            type="text"
+          <select
             className="form-control"
             id="gender"
             name="gender"
             value={participant.gender}
             onChange={handleChange}
             required
-          />
+          >
+            <option value="">Select Gender</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+          </select>
         </div>
         <div className="form-group">
           <label htmlFor="age">Age</label>

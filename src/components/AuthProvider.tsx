@@ -16,18 +16,23 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
   const [user, setUser] = useState<{ username: string; role: string } | null>(null);
 
   useEffect(() => {
+    const token = localStorage.getItem('token');
+    if (!token) {
+      console.warn('No token found');
+      return;
+    }
+
     const fetchCurrentUser = async () => {
       try {
         const userData = await getCurrentUser();
         setUser(userData);
       } catch (error) {
         console.error('Error fetching current user:', error);
+        localStorage.removeItem('token'); // Remove invalid token if error occurs
       }
     };
 
-    if (localStorage.getItem('token')) {
-      fetchCurrentUser();
-    }
+    fetchCurrentUser();
   }, []);
 
   const signIn = async (username: string, password: string) => {

@@ -42,9 +42,9 @@ const Navbar: React.FC = () => {
                 <li className="nav-item">
                   <Link className="nav-link" to="/login">Login</Link>
                 </li>
-                <li className="nav-item">
+             <li className="nav-item">
                   <Link className="nav-link" to="/signup">Sign Up</Link>
-                </li>
+               </li>
               </>
             )}
           </ul>
